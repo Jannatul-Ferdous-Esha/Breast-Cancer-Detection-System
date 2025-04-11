@@ -1,0 +1,10 @@
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+/static/
+# Virtual environments
+venv/
+venv310/
+__pycache__/

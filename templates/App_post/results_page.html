@@ -1,0 +1,52 @@
+{% extends 'portfolio/navbar.html' %}
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body style="background-color: pink; text-align: center;">
+    <h1 style="color: darkred;">Breast Cancer Prediction Result</h1>
+    <h2 style="color: {% if prediction == 'Malignant' %}red{% else %}green{% endif %};">
+        The predicted result is: <strong>{{ prediction }}</strong>
+    </h2>
+    <br>
+    <a href="{% url 'input_page' %}" style="padding: 10px; background: blue; color: white; text-decoration: none; border-radius: 5px;">Check Another</a>
+</body>
+</html> {% endcomment %}
+
+
+{% load static %}
+
+{% block title %}Prediction Result{% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+  <div class="p-5 rounded shadow-lg text-center" style="background-color: #f6dbe1; max-width: 850px; width: 100%;">
+
+    <!-- Title -->
+    <h1 class="mb-4" style="color: #f34d83; font-size: 45px; font-weight: bold;">
+      Breast Cancer Prediction Result
+    </h1>
+
+    <!-- Prediction Output -->
+    <div class="p-4 rounded shadow-sm" style="background-color: white; border-left: 6px solid #f34d83;">
+      <h3 class="mb-0" style="font-size: 40px; color: #f34d83;">Prediction:</h3>
+      <p class="mt-2" style="font-size: 38px; font-weight: bold; color: {% if prediction == 'Malignant' %}red{% else %}green{% endif %};">
+        {{ prediction }}
+      </p>
+    </div>
+
+    <!-- Action Button -->
+    <a href="{% url 'App_post:input_page' %}" class="btn text-white mt-4"
+       style="background-color: #f34d83; font-size: 20px; padding: 12px 30px; border-radius: 8px;">
+      Check Another
+    </a>
+
+  </div>
+</div>
+{% endblock %}

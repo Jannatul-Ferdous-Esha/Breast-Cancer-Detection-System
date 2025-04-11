@@ -1,0 +1,127 @@
+{% extends 'portfolio/navbar.html' %}{% comment %} {% extends 'portfolio/navbar.html' %} 
+
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %} Breast Cancer Prediction {% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+  <div class="p-5 rounded shadow-lg text-center" style="background-color: #f6dbe1; max-width: 750px; width: 100%;">
+
+    <!-- Page Title -->
+    <h1 class="mb-4" style="font-size: 38px; font-weight: bold; color: #f34d83;">Breast Cancer Prediction</h1>
+
+    <!-- Input Form -->
+    <form method="post" action="{% url 'App_post:results_page' prediction='prediction_value' %}" class="text-left">
+
+      {% csrf_token %}
+      {{ form|crispy }}
+      <button type="submit" class="btn btn-lg btn-block text-white mt-3" 
+        style="background-color: #f34d83; font-size: 22px; padding: 12px 0; border-radius: 8px;">
+        Predict
+      </button>
+    </form>
+
+    <!-- Display Prediction Result -->
+    {% if prediction %}
+    <div class="mt-4 p-4 rounded shadow-sm" style="background-color: #fff3f6; border-left: 6px solid #f34d83;">
+      <h3 class="mb-0" style="color: #f34d83; font-size: 26px;">Prediction Result:</h3>
+      <p class="mt-2" style="font-size: 22px; font-weight: bold; color: #333;">{{ prediction }}</p>
+    </div>
+    {% endif %}
+
+  </div>
+</div>
+{% endblock %} {% endcomment %}
+
+
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}Breast Cancer Prediction{% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+  <div class="p-5 rounded shadow-lg text-center" style="background-color: #f6dbe1; max-width: 750px; width: 100%;">
+
+    <!-- Page Title -->
+    <h1 class="mb-4" style="font-size: 38px; font-weight: bold; color: #f34d83;">
+      Breast Cancer Prediction
+    </h1>
+
+    <!-- Input Form -->
+    <form method="post" action="{% url 'App_post:input_page' %}" class="text-left d-grid">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <button type="submit" class="btn btn-lg btn-block text-white mt-3"
+        style="background-color: #f34d83; font-size: 22px; padding: 12px 0; border-radius: 8px;">
+        Predict
+      </button>
+    </form>
+
+    <!-- Optional Display of Prediction (if redirected back with context) -->
+    {% if prediction %}
+    <div class="mt-4 p-4 rounded shadow-sm" style="background-color: #fff3f6; border-left: 6px solid #f34d83;">
+      <h3 class="mb-0" style="color: #f34d83; font-size: 26px;">Prediction Result:</h3>
+      <p class="mt-2" style="font-size: 22px; font-weight: bold; color: #333;">{{ prediction }}</p>
+    </div>
+    {% endif %}
+
+  </div>
+</div>
+{% endblock %}  
+{% comment %} {% block title %}Breast Cancer Prediction{% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+  <div class="p-5 rounded shadow-lg text-center" style="background-color: #f6dbe1; max-width: 1400px; width: 100%;">
+
+    <!-- Page Title -->
+    <h1 class="mb-4" style="font-size: 38px; font-weight: bold; color: #f34d83;">
+      Breast Cancer Prediction
+    </h1>
+
+    <!-- Input Form -->
+    <form method="post" action="{% url 'App_post:input_page' %}" class="text-left">
+      {% csrf_token %}
+
+      <div class="container-fluid">
+        <div class="row g-4">  <!-- gap between columns -->
+          {% for field in form %}
+            <div class="col-md-2">
+              <div class="form-group">
+                <label for="{{ field.id_for_label }}" style="font-weight: 500; font-size: 14px;">{{ field.label }}</label>
+                {{ field|add_class:"form-control" }}
+                {% if field.errors %}
+                  <small class="text-danger">{{ field.errors }}</small>
+                {% endif %}
+              </div>
+            </div>
+
+            {% if forloop.counter|divisibleby:"5" %}
+              </div><div class="row g-4">
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn text-white mt-4 px-5 py-2"
+          style="background-color: #f34d83; font-size: 20px; border-radius: 8px;">
+          Predict
+        </button>
+      </div>
+    </form>
+
+    <!-- Optional Display of Prediction -->
+    {% if prediction %}
+    <div class="mt-4 p-4 rounded shadow-sm" style="background-color: #fff3f6; border-left: 6px solid #f34d83;">
+      <h3 class="mb-0" style="color: #f34d83; font-size: 26px;">Prediction Result:</h3>
+      <p class="mt-2" style="font-size: 22px; font-weight: bold; color: #333;">{{ prediction }}</p>
+    </div>
+    {% endif %}
+
+  </div>
+</div>
+{% endblock %} {% endcomment %}
