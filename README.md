@@ -11,4 +11,6 @@ Integrated with Django backend
 Frontend styled with Bootstrap and custom CSS
 
 📽 Demo Video
+
+
 https://github.com/user-attachments/assets/d9305ca1-98d8-4a0f-a190-30455ce48fdd
